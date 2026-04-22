@@ -77,11 +77,10 @@
 
   /* ─── HERO ─── */
   .hero {
-    min-height: 88vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5rem 4rem;
+    padding: 5rem 4rem 4rem;
     border-bottom: 1px solid var(--border);
   }
 
@@ -99,7 +98,6 @@
     color: var(--muted);
     max-width: 480px;
     line-height: 1.75;
-    margin-bottom: 2.5rem;
   }
 
   .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
@@ -647,7 +645,7 @@
   <div class="nav-links">
     <a onclick="showPage('transcription')">Transcription</a>
     <a onclick="showPage('stems')">Stem Separation</a>
-    <a onclick="showPage('form')" class="nav-cta">REQUEST SERVICE →</a>
+    <a onclick="showPage('contact')" class="nav-cta">CONTACT →</a>
   </div>
 </nav>
 
@@ -660,10 +658,6 @@
   <section class="hero">
     <h1>Professional audio services.</h1>
     <p class="hero-sub">Convert speech to text with AI + human accuracy. Separate songs into clean stems with precision. Fast turnaround, professional quality.</p>
-    <div class="btn-group">
-      <button class="btn-primary" onclick="showPage('form')">REQUEST SERVICE</button>
-      <button class="btn-secondary" onclick="document.getElementById('services-home').scrollIntoView({behavior:'smooth'})">EXPLORE SERVICES</button>
-    </div>
   </section>
 
   <!-- Services -->
@@ -732,8 +726,8 @@
   <!-- CTA -->
   <section class="cta-section">
     <h2>Ready to get started?</h2>
-    <p>Submit your request and get professional results fast.</p>
-    <button class="btn-primary" onclick="showPage('form')">REQUEST SERVICE NOW</button>
+    <p>Contact us and get professional results fast.</p>
+    <button class="btn-primary" onclick="showPage('contact')">CONTACT US</button>
   </section>
 
   <footer>
@@ -751,7 +745,6 @@
     <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
     <h1>Transcription</h1>
     <p>Convert your audio or video files into accurate text. AI-powered processing with professional human review — in English and Greek.</p>
-    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
   </section>
 
   <!-- How It Works -->
@@ -789,27 +782,21 @@
         <div class="price-name">SHORT</div>
         <div class="price-main">€12 <span>/ up to 10 min</span></div>
         <div class="price-desc">Interviews, clips, or short recordings. Delivered in 24h.</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+        <button class="order-btn" onclick="showForm('transcription')">Order Now →</button>
       </div>
       <div class="price-card">
         <div class="price-name">MEDIUM</div>
         <div class="price-main">€18 <span>/ 10–30 min</span></div>
         <div class="price-desc">Podcasts, meetings, or longer recordings. Delivered in 48h.</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+        <button class="order-btn" onclick="showForm('transcription')">Order Now →</button>
       </div>
       <div class="price-card">
         <div class="price-name">EXTENDED</div>
         <div class="price-main">€0.50 <span>/ min</span></div>
         <div class="price-desc">30+ minutes — custom quotes available on request.</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+        <button class="order-btn" onclick="showForm('transcription')">Order Now →</button>
       </div>
     </div>
-  </section>
-
-  <section class="cta-section">
-    <h2>Ready to transcribe?</h2>
-    <p>Submit your file and get your transcript fast.</p>
-    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
   </section>
 
   <footer>
@@ -827,7 +814,6 @@
     <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
     <h1>Stem Separation</h1>
     <p>Isolate any element of a song — vocals, drums, bass, and more — with professional-grade accuracy and human review.</p>
-    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
   </section>
 
   <!-- How It Works -->
@@ -888,6 +874,49 @@
       <div class="stem-card stem-card-wide">
         <h3>Other</h3>
         <p>All remaining instruments — synths, guitars, keys, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stem Pricing -->
+  <section class="section">
+    <div class="section-label">// PRICING</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">SHORT</div>
+        <div class="price-main">€12 <span>/ track</span></div>
+        <div class="price-desc">Up to 5 min · 4 stems · Human reviewed</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">MEDIUM</div>
+        <div class="price-main">€16 <span>/ track</span></div>
+        <div class="price-desc">5–10 min · 4 stems · Human reviewed</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">LONG</div>
+        <div class="price-main">€25 <span>/ track</span></div>
+        <div class="price-desc">10+ min · Full human review</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">PACK 5</div>
+        <div class="price-main">€40 <span>/ 5 tracks</span></div>
+        <div class="price-desc">€8 per track · Priority delivery</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">PACK 10</div>
+        <div class="price-main">€80 <span>/ 10 tracks</span></div>
+        <div class="price-desc">€8 per track · Priority delivery</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">MONTHLY</div>
+        <div class="price-main">€150 <span>/ mo</span></div>
+        <div class="price-desc">25 tracks · 2 revisions · Support</div>
+        <button class="order-btn" onclick="showForm('stems')">Order Now →</button>
       </div>
     </div>
   </section>
@@ -981,55 +1010,6 @@
     </div>
   </section>
 
-  <!-- Stem Pricing -->
-  <section class="section">
-    <div class="section-label">// PRICING</div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name">SHORT</div>
-        <div class="price-main">€12 <span>/ track</span></div>
-        <div class="price-desc">Up to 5 min · 4 stems · Human reviewed</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">MEDIUM</div>
-        <div class="price-main">€16 <span>/ track</span></div>
-        <div class="price-desc">5–10 min · 4 stems · Human reviewed</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">LONG</div>
-        <div class="price-main">€25 <span>/ track</span></div>
-        <div class="price-desc">10+ min · Full human review</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">PACK 5</div>
-        <div class="price-main">€40 <span>/ 5 tracks</span></div>
-        <div class="price-desc">€8 per track · Priority delivery</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">PACK 10</div>
-        <div class="price-main">€80 <span>/ 10 tracks</span></div>
-        <div class="price-desc">€8 per track · Priority delivery</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-      <div class="price-card">
-        <div class="price-name">MONTHLY</div>
-        <div class="price-main">€150 <span>/ mo</span></div>
-        <div class="price-desc">25 tracks · 2 revisions · Support</div>
-        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <h2>Ready to split your track?</h2>
-    <p>Submit your file and get clean stems fast.</p>
-    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
-  </section>
-
   <footer>
     <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
     <div>splitlabstems@gmail.com</div>
@@ -1037,33 +1017,16 @@
 </div>
 
 <!-- ═══════════════════════════════════════════
-     FORM PAGE
+     FORM — TRANSCRIPTION
 ════════════════════════════════════════════ -->
-<div id="form" class="page">
+<div id="form-transcription" class="page">
   <div class="form-container">
     <div class="form-box">
-      <button class="back-btn" onclick="showPage('home')" style="margin-bottom:1.5rem;">← Back to Home</button>
-      <h2>Request a Service</h2>
+      <button class="back-btn" onclick="showPage('transcription')" style="margin-bottom:1.5rem;">← Back to Transcription</button>
+      <h2>Transcription Request</h2>
       <p class="form-subtitle">Fill in the details below and we'll get back to you within 24 hours.</p>
 
-      <form id="serviceForm" onsubmit="handleSubmit(event)">
-
-        <!-- SERVICE SELECT -->
-        <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
-          <p style="font-weight:600; font-size:0.9rem; margin-bottom:1rem;">What service do you need? *</p>
-          <div class="service-select-row">
-            <div class="radio-option">
-              <input type="radio" id="r-transcription" name="service" value="transcription" required onchange="toggleServiceFields('transcription')">
-              <label for="r-transcription">Transcription</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" id="r-stems" name="service" value="stems" onchange="toggleServiceFields('stems')">
-              <label for="r-stems">Stem Separation</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- COMMON FIELDS -->
+      <form onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label>Your Name *</label>
           <input type="text" required placeholder="John Doe">
@@ -1072,56 +1035,130 @@
           <label>Email Address *</label>
           <input type="email" required placeholder="you@example.com">
         </div>
-
-        <!-- TRANSCRIPTION FIELDS -->
-        <div id="fields-transcription" class="conditional-section">
-          <div class="form-group">
-            <label>Audio Duration *</label>
-            <select id="sel-duration" required>
-              <option value="">Select duration...</option>
-              <option>Up to 10 minutes (€12)</option>
-              <option>10–30 minutes (€18)</option>
-              <option>30+ minutes (€0.50/min)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Language *</label>
-            <select id="sel-language" required>
-              <option value="">Select language...</option>
-              <option>English</option>
-              <option>Greek</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Audio Duration *</label>
+          <select required>
+            <option value="">Select duration...</option>
+            <option>Up to 10 minutes (€12)</option>
+            <option>10–30 minutes (€18)</option>
+            <option>30+ minutes (€0.50/min)</option>
+          </select>
         </div>
-
-        <!-- STEMS FIELDS -->
-        <div id="fields-stems" class="conditional-section">
-          <div class="form-group">
-            <label>Track Duration *</label>
-            <select id="sel-track-dur">
-              <option value="">Select duration...</option>
-              <option>Up to 5 minutes (€12)</option>
-              <option>5–10 minutes (€16)</option>
-              <option>10+ minutes (€25)</option>
-              <option>Pack of 5 tracks (€40)</option>
-              <option>Pack of 10 tracks (€80)</option>
-              <option>Monthly plan (€150/mo)</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Language *</label>
+          <select required>
+            <option value="">Select language...</option>
+            <option>English</option>
+            <option>Greek</option>
+          </select>
         </div>
-
-        <!-- MESSAGE -->
         <div class="form-group">
           <label>Additional Notes</label>
           <textarea placeholder="Any special requests or details..."></textarea>
         </div>
-
         <button type="submit" class="submit-btn">SUBMIT REQUEST</button>
-
       </form>
     </div>
   </div>
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
 
+<!-- ═══════════════════════════════════════════
+     FORM — STEMS
+════════════════════════════════════════════ -->
+<div id="form-stems" class="page">
+  <div class="form-container">
+    <div class="form-box">
+      <button class="back-btn" onclick="showPage('stems')" style="margin-bottom:1.5rem;">← Back to Stem Separation</button>
+      <h2>Stem Separation Request</h2>
+      <p class="form-subtitle">Fill in the details below and we'll get back to you within 24 hours.</p>
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Track Duration *</label>
+          <select required>
+            <option value="">Select duration...</option>
+            <option>Up to 5 minutes (€12)</option>
+            <option>5–10 minutes (€16)</option>
+            <option>10+ minutes (€25)</option>
+            <option>Pack of 5 tracks (€40)</option>
+            <option>Pack of 10 tracks (€80)</option>
+            <option>Monthly plan (€150/mo)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea placeholder="Any special requests or details..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">SUBMIT REQUEST</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT PAGE
+════════════════════════════════════════════ -->
+<div id="contact" class="page">
+  <div class="form-container">
+    <div class="form-box">
+      <button class="back-btn" onclick="showPage('home')" style="margin-bottom:1.5rem;">← Back to Home</button>
+      <h2>Get in Touch</h2>
+      <p class="form-subtitle">We're available 9AM–9PM Athens time (GMT+3). We'll get back to you within a few hours.</p>
+
+      <div style="display:flex; flex-direction:column; gap:1.5rem; margin-top:2rem;">
+
+        <div style="border:1px solid var(--border); border-radius:4px; padding:1.8rem; background:rgba(255,255,255,0.03); display:flex; align-items:center; gap:1.5rem;">
+          <div style="font-size:1.5rem;">✉️</div>
+          <div>
+            <div style="font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); font-weight:600; margin-bottom:0.4rem;">EMAIL</div>
+            <a href="mailto:splitlabstems@gmail.com" style="color:var(--white); text-decoration:none; font-weight:600; font-size:1rem; transition:opacity 0.2s;" onmouseover="this.style.opacity=0.7" onmouseout="this.style.opacity=1">splitlabstems@gmail.com</a>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border); border-radius:4px; padding:1.8rem; background:rgba(255,255,255,0.03); display:flex; align-items:center; gap:1.5rem;">
+          <div style="font-size:1.5rem;">🕐</div>
+          <div>
+            <div style="font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); font-weight:600; margin-bottom:0.4rem;">AVAILABILITY</div>
+            <div style="font-weight:600; font-size:1rem;">9AM – 9PM · Athens (GMT+3)</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border); border-radius:4px; padding:1.8rem; background:rgba(255,255,255,0.03); display:flex; align-items:center; gap:1.5rem;">
+          <div style="font-size:1.5rem;">⚡</div>
+          <div>
+            <div style="font-size:0.7rem; letter-spacing:0.1em; color:var(--muted); font-weight:600; margin-bottom:0.4rem;">RESPONSE TIME</div>
+            <div style="font-weight:600; font-size:1rem;">Within a few hours</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border);">
+        <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1.2rem;">Ready to place an order? Go directly to a service:</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <button class="learn-more-btn" onclick="showPage('transcription')" style="align-self:auto;">Transcription <span class="arrow">→</span></button>
+          <button class="learn-more-btn" onclick="showPage('stems')" style="align-self:auto;">Stem Separation <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <footer>
     <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
     <div>splitlabstems@gmail.com</div>
@@ -1135,30 +1172,14 @@
     window.scrollTo(0, 0);
   }
 
-  function toggleServiceFields(service) {
-    const transcription = document.getElementById('fields-transcription');
-    const stems = document.getElementById('fields-stems');
-    if (service === 'transcription') {
-      transcription.classList.add('active');
-      stems.classList.remove('active');
-      document.getElementById('sel-duration').required = true;
-      document.getElementById('sel-language').required = true;
-      document.getElementById('sel-track-dur').required = false;
-    } else {
-      stems.classList.add('active');
-      transcription.classList.remove('active');
-      document.getElementById('sel-track-dur').required = true;
-      document.getElementById('sel-duration').required = false;
-      document.getElementById('sel-language').required = false;
-    }
+  function showForm(service) {
+    showPage('form-' + service);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     alert('Thank you! Your request has been submitted. We\'ll contact you within 24 hours.');
     e.target.reset();
-    document.getElementById('fields-transcription').classList.remove('active');
-    document.getElementById('fields-stems').classList.remove('active');
   }
 </script>
 

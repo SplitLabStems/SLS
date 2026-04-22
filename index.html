@@ -3,30 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SplitLab — Professional Stem Separation</title>
+<title>AudioWorks — Professional Audio Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --dark-blue: #253056;
     --darker-blue: #1a1f3a;
     --white: #ffffff;
-    --light-gray: #f0f4f8;
     --border: #3a4a6a;
-    --text-muted: rgba(255,255,255,0.6);
+    --muted: rgba(255,255,255,0.55);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { overflow-x: hidden; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     background: var(--dark-blue);
     color: var(--white);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    width: 100%;
   }
 
-  /* NAV */
+  /* ─── NAV ─── */
   nav {
     display: flex;
     justify-content: space-between;
@@ -40,33 +38,50 @@
   }
 
   .logo {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--white);
+    letter-spacing: 0.06em;
   }
 
-  .nav-cta {
-    font-family: 'Inter', sans-serif;
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
     color: var(--white);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: opacity 0.2s;
+    cursor: pointer;
   }
 
-  .nav-cta:hover { opacity: 1; }
+  .nav-links a:hover { opacity: 1; }
 
-  /* HERO */
+  .nav-cta {
+    opacity: 1 !important;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: rgba(255,255,255,0.08) !important; }
+
+  /* ─── PAGES ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── HERO ─── */
   .hero {
-    min-height: 85vh;
+    min-height: 88vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5rem 4rem;
-    background: var(--dark-blue);
     border-bottom: 1px solid var(--border);
   }
 
@@ -75,17 +90,16 @@
     font-weight: 700;
     line-height: 0.95;
     letter-spacing: -0.02em;
-    color: var(--white);
     margin-bottom: 1.5rem;
+    max-width: 900px;
   }
 
   .hero-sub {
-    font-size: 1.1rem;
-    opacity: 0.7;
-    max-width: 500px;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.75;
     margin-bottom: 2.5rem;
-    font-weight: 400;
   }
 
   .btn-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
@@ -93,14 +107,16 @@
   .btn-primary {
     background: var(--white);
     color: var(--dark-blue);
-    padding: 1rem 2.2rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
     border-radius: 4px;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Inter', sans-serif;
   }
 
   .btn-primary:hover {
@@ -109,224 +125,139 @@
   }
 
   .btn-secondary {
-    border: 1.5px solid var(--white);
+    border: 1.5px solid rgba(255,255,255,0.4);
     color: var(--white);
-    padding: 1rem 2.2rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s;
-    display: inline-block;
     border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s;
+    cursor: pointer;
     background: transparent;
+    font-family: 'Inter', sans-serif;
   }
 
-  .btn-secondary:hover { 
-    background: var(--white);
-    color: var(--dark-blue);
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.08);
   }
 
-  /* SECTIONS */
+  /* ─── SERVICES SECTION (HOME) ─── */
   .section {
     padding: 5rem 4rem;
     border-bottom: 1px solid var(--border);
-    background: var(--dark-blue);
   }
 
   .section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     letter-spacing: 0.15em;
-    color: var(--white);
-    margin-bottom: 2.5rem;
-    opacity: 0.5;
+    color: var(--muted);
     font-weight: 600;
+    margin-bottom: 2.5rem;
   }
 
   .section h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 3rem;
-    color: var(--white);
+    letter-spacing: -0.01em;
   }
 
-  /* HOW IT WORKS - 4 columns */
-  .steps {
+  /* SERVICE CARDS — 2 column */
+  .service-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
-  .step {
+  .service-card {
+    background: var(--darker-blue);
     border: 1px solid var(--border);
-    padding: 2rem;
-    background: var(--darker-blue);
-    transition: border-color 0.3s, background 0.3s;
+    padding: 3rem;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: border-color 0.3s, transform 0.3s;
   }
 
-  .step:hover { 
-    border-color: var(--white);
-    background: rgba(255,255,255,0.05);
-  }
-
-  .step h3 { font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 600; color: var(--white); }
-  .step p { font-size: 0.9rem; opacity: 0.6; line-height: 1.6; }
-
-  /* WHAT YOU GET */
-  .stems-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .stem-card {
-    background: var(--darker-blue);
-    padding: 2rem 1.5rem;
-    transition: background 0.3s;
-  }
-
-  .stem-card:hover { background: rgba(255,255,255,0.08); }
-  .stem-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .stem-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--white); }
-  .stem-card p { font-size: 0.85rem; opacity: 0.5; line-height: 1.5; }
-
-  .stem-card-wide {
-    grid-column: span 2;
-  }
-
-  /* PRICING */
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .price-card {
-    border: 1px solid var(--border);
-    padding: 2rem;
-    background: var(--darker-blue);
-    transition: border-color 0.3s, background 0.3s, transform 0.3s;
-    position: relative;
-    border-radius: 4px;
-  }
-
-  .price-card:hover {
-    border-color: var(--white);
-    background: rgba(255,255,255,0.08);
+  .service-card:hover {
+    border-color: rgba(255,255,255,0.5);
     transform: translateY(-3px);
   }
 
-  .price-card.featured {
-    border-color: var(--white);
-    background: rgba(255,255,255,0.1);
-  }
-
-  .price-card.extra {
-    border-style: dashed;
-    grid-column: 1 / -1;
-  }
-
-  .featured-tag {
-    position: absolute;
-    top: -12px;
-    left: 1.5rem;
-    background: var(--white);
-    color: var(--dark-blue);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    padding: 0.3rem 0.7rem;
-    letter-spacing: 0.08em;
-    font-weight: 700;
-    border-radius: 2px;
-  }
-
-  .price-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    opacity: 0.5;
-    margin-bottom: 0.8rem;
+  .service-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
     font-weight: 600;
   }
 
-  .price-main {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
+  .service-card h3 {
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 0.3rem;
+    line-height: 1.2;
   }
 
-  .price-main span { font-size: 0.85rem; opacity: 0.6; font-weight: 400; }
-  .price-desc { font-size: 0.8rem; opacity: 0.6; margin-top: 0.8rem; line-height: 1.5; }
-
-  .order-btn {
-    display: inline-block;
-    margin-top: 1.2rem;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
-    transition: opacity 0.2s;
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.75;
+    flex: 1;
   }
 
-  .order-btn:hover { opacity: 0.7; }
-
-  /* DEMOS */
-  .demo-block {
-    border: 1px solid var(--border);
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    border-radius: 4px;
+  .service-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
   }
 
-  .demo-header {
+  .service-features span {
+    font-size: 0.85rem;
+    color: var(--muted);
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 1.8rem;
-    background: var(--darker-blue);
-    border-bottom: 1px solid var(--border);
+    gap: 0.6rem;
   }
 
-  .demo-header-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+  .service-features span::before {
+    content: '✓';
     color: var(--white);
-    opacity: 0.5;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 0.75rem;
   }
 
-  .demo-header-title {
-    font-size: 1rem;
+  .learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--white);
-  }
-
-  .demo-player {
-    padding: 1.5rem 1.8rem;
-    background: var(--darker-blue);
-  }
-
-  .demo-player-label {
+    cursor: pointer;
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 4px;
+    background: transparent;
     font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    opacity: 0.5;
-    margin-bottom: 0.6rem;
-    font-weight: 600;
+    transition: all 0.2s;
+    align-self: flex-start;
   }
 
-  audio { width: 100%; height: 32px; accent-color: var(--white); }
+  .learn-more-btn:hover {
+    background: var(--white);
+    color: var(--dark-blue);
+    border-color: var(--white);
+  }
 
-  /* WHY */
+  .learn-more-btn .arrow {
+    transition: transform 0.2s;
+  }
+
+  .learn-more-btn:hover .arrow { transform: translateX(4px); }
+
+  /* ─── WHY AUDIOWORKS ─── */
   .why-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -341,319 +272,895 @@
 
   .why-item:hover { border-top-color: var(--white); }
 
-  .why-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.8rem; color: var(--white); }
-  .why-item p { font-size: 0.9rem; opacity: 0.6; line-height: 1.7; }
+  .why-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
 
-  /* CTA */
+  .why-item p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── CTA ─── */
   .cta-section {
     padding: 7rem 4rem;
     background: var(--darker-blue);
     text-align: center;
-    position: relative;
-    overflow: hidden;
     border-bottom: 1px solid var(--border);
   }
 
   .cta-section h2 {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
     font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     letter-spacing: -0.01em;
   }
 
-  .cta-section p { 
-    opacity: 0.6; 
-    color: var(--white); 
-    margin-bottom: 2.5rem; 
-    font-size: 1rem; 
+  .cta-section p {
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+
+  /* ─── SERVICE PAGE ─── */
+  .service-hero {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    cursor: pointer;
+    margin-bottom: 3rem;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+    padding: 0;
+  }
+
+  .back-btn:hover { color: var(--white); }
+
+  .service-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-hero p {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  /* STEPS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    background: var(--darker-blue);
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+
+  .step:hover { border-color: rgba(255,255,255,0.4); }
+
+  .step-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* PRICING GRID */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .price-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    background: var(--darker-blue);
+    border-radius: 4px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .price-card:hover {
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-3px);
+  }
+
+  .price-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .price-main {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .price-main span { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+  .price-desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.8rem; line-height: 1.5; }
+
+  .order-btn {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    transition: opacity 0.2s;
+  }
+
+  .order-btn:hover { opacity: 0.6; }
+
+  /* STEMS GRID */
+  .stems-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 0;
+  }
+
+  .stem-card {
+    background: var(--darker-blue);
+    padding: 2rem 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .stem-card:hover { background: rgba(255,255,255,0.06); }
+
+  .stem-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .stem-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .stem-card-wide { grid-column: span 2; }
+
+  /* DEMO BLOCKS */
+  .demo-block {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .demo-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--darker-blue);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .demo-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .demo-title { font-size: 0.95rem; font-weight: 600; }
+
+  .demo-player {
+    padding: 1.2rem 1.5rem;
+    background: var(--darker-blue);
+  }
+
+  audio { width: 100%; height: 30px; accent-color: var(--white); }
+
+  /* FORM PAGE */
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .form-box {
+    background: var(--darker-blue);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    border-radius: 4px;
+  }
+
+  .form-box h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .service-select-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .radio-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .radio-option:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); }
+
+  .radio-option input[type="radio"] { cursor: pointer; width: 16px; height: 16px; accent-color: var(--white); }
+
+  .radio-option label { cursor: pointer; font-weight: 500; font-size: 0.9rem; }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--white);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  .form-group select option { background: var(--dark-blue); }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .conditional-section { display: none; }
+  .conditional-section.active { display: block; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--white);
+    color: var(--dark-blue);
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,255,255,0.15);
   }
 
   /* FOOTER */
   footer {
     padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    opacity: 0.5;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
     background: var(--darker-blue);
-    color: var(--white);
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .steps { grid-template-columns: repeat(2, 1fr); }
-    .stems-grid { grid-template-columns: repeat(2, 1fr); }
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
-    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-    .price-card.extra { grid-column: 1 / -1; }
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
-    .hero { padding: 3rem 1.5rem; min-height: auto; }
-    .section { padding: 3rem 1.5rem; }
-    .steps { grid-template-columns: 1fr; }
-    .stems-grid { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero, .section, .service-hero { padding: 3rem 1.5rem; }
+    .service-cards { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .stems-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
-    .price-card.extra { grid-column: 1; }
     .cta-section { padding: 4rem 1.5rem; }
-    footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 1.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
   }
 </style>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
 <nav>
-  <div class="logo">SPLITLAB</div>
-  <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="nav-cta">REQUEST STEMS →</a>
+  <div class="logo" onclick="showPage('home')" style="cursor:pointer;">AUDIOWORKS</div>
+  <div class="nav-links">
+    <a onclick="showPage('transcription')">Transcription</a>
+    <a onclick="showPage('stems')">Stem Separation</a>
+    <a onclick="showPage('form')" class="nav-cta">REQUEST SERVICE →</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Split your track into clean stems.</h1>
-  <p class="hero-sub">Professional AI-powered stem separation, reviewed and refined by a human audio engineer. Vocals, drums, bass, and more — isolated with precision.</p>
-  <div class="btn-group">
-    <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="btn-primary">REQUEST STEMS</a>
-    <a href="mailto:splitlabstems@gmail.com" class="btn-secondary">CONTACT US</a>
+<!-- ═══════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Professional audio services.</h1>
+    <p class="hero-sub">Convert speech to text with AI + human accuracy. Separate songs into clean stems with precision. Fast turnaround, professional quality.</p>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="showPage('form')">REQUEST SERVICE</button>
+      <button class="btn-secondary" onclick="document.getElementById('services-home').scrollIntoView({behavior:'smooth'})">EXPLORE SERVICES</button>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services-home">
+    <div class="section-label">// OUR SERVICES</div>
+    <div class="service-cards">
+
+      <!-- Transcription Card -->
+      <div class="service-card">
+        <div class="service-tag">SERVICE 01</div>
+        <h3>Transcription</h3>
+        <p>Convert your audio or video into accurate, polished text. AI-powered processing combined with professional human review for maximum accuracy.</p>
+        <div class="service-features">
+          <span>AI + Human Review</span>
+          <span>English & Greek</span>
+          <span>24-48h turnaround</span>
+          <span>Any format accepted</span>
+        </div>
+        <button class="learn-more-btn" onclick="showPage('transcription')">
+          Learn More <span class="arrow">→</span>
+        </button>
+      </div>
+
+      <!-- Stem Separation Card -->
+      <div class="service-card">
+        <div class="service-tag">SERVICE 02</div>
+        <h3>Stem Separation</h3>
+        <p>Isolate vocals, drums, bass, and more from any song. Professional-grade AI processing with human review ensures clean, usable stems for any project.</p>
+        <div class="service-features">
+          <span>AI + Human Review</span>
+          <span>Up to 7 stems</span>
+          <span>Any genre</span>
+          <span>Fast delivery</span>
+        </div>
+        <button class="learn-more-btn" onclick="showPage('stems')">
+          Learn More <span class="arrow">→</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why AudioWorks -->
+  <section class="section">
+    <div class="section-label">// WHY AUDIOWORKS</div>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>AI + Human Expert</h3>
+        <p>Every result is reviewed by a professional audio engineer. No shortcuts.</p>
+      </div>
+      <div class="why-item">
+        <h3>English & Greek</h3>
+        <p>Transcription in English and Greek. Accents and dialects handled with precision.</p>
+      </div>
+      <div class="why-item">
+        <h3>Fast Turnaround</h3>
+        <p>Available 9AM–9PM Athens time (GMT+3). Most orders within 24-48 hours.</p>
+      </div>
+      <div class="why-item">
+        <h3>Professional Quality</h3>
+        <p>Trusted by producers, podcasters, content creators, and businesses.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to get started?</h2>
+    <p>Submit your request and get professional results fast.</p>
+    <button class="btn-primary" onclick="showPage('form')">REQUEST SERVICE NOW</button>
+  </section>
+
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TRANSCRIPTION PAGE
+════════════════════════════════════════════ -->
+<div id="transcription" class="page">
+
+  <section class="service-hero">
+    <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+    <h1>Transcription</h1>
+    <p>Convert your audio or video files into accurate text. AI-powered processing with professional human review — in English and Greek.</p>
+    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="section-label">// HOW IT WORKS</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Send Your File</h3>
+        <p>Submit your audio or video via WeTransfer or Google Drive through our request form.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>AI Processing</h3>
+        <p>Advanced AI transcribes your audio with high accuracy across accents and dialects.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Human Review</h3>
+        <p>A professional reviews and corrects every word before delivery.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Receive Transcript</h3>
+        <p>Get your polished transcript delivered to your inbox. Ready to use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transcription Pricing -->
+  <section class="section">
+    <div class="section-label">// PRICING</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">SHORT</div>
+        <div class="price-main">€12 <span>/ up to 10 min</span></div>
+        <div class="price-desc">Interviews, clips, or short recordings. Delivered in 24h.</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">MEDIUM</div>
+        <div class="price-main">€18 <span>/ 10–30 min</span></div>
+        <div class="price-desc">Podcasts, meetings, or longer recordings. Delivered in 48h.</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">EXTENDED</div>
+        <div class="price-main">€0.50 <span>/ min</span></div>
+        <div class="price-desc">30+ minutes — custom quotes available on request.</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to transcribe?</h2>
+    <p>Submit your file and get your transcript fast.</p>
+    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
+  </section>
+
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     STEM SEPARATION PAGE
+════════════════════════════════════════════ -->
+<div id="stems" class="page">
+
+  <section class="service-hero">
+    <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
+    <h1>Stem Separation</h1>
+    <p>Isolate any element of a song — vocals, drums, bass, and more — with professional-grade accuracy and human review.</p>
+    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="section-label">// HOW IT WORKS</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Send Your Track</h3>
+        <p>Submit via WeTransfer or Google Drive through our request form.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>AI Processing</h3>
+        <p>Our AI pipeline separates your track into clean stems with precision.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Human Review</h3>
+        <p>A professional audio engineer reviews every stem before delivery.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Receive Stems</h3>
+        <p>Get your stems via WeTransfer. Ready for your project.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Get -->
+  <section class="section">
+    <div class="section-label">// WHAT YOU GET</div>
+    <div class="stems-grid">
+      <div class="stem-card">
+        <h3>Vocals</h3>
+        <p>Clean isolated vocal track for remixes and karaoke.</p>
+      </div>
+      <div class="stem-card">
+        <h3>Instrumental</h3>
+        <p>Full instrumental — track without vocals.</p>
+      </div>
+      <div class="stem-card">
+        <h3>Drums</h3>
+        <p>Isolated drum track for remixing and beat replacement.</p>
+      </div>
+      <div class="stem-card">
+        <h3>Without Drums</h3>
+        <p>Full mix with drums removed.</p>
+      </div>
+      <div class="stem-card">
+        <h3>Bass</h3>
+        <p>Isolated bass stem for mixing and production.</p>
+      </div>
+      <div class="stem-card">
+        <h3>Without Bass</h3>
+        <p>Full mix with bass removed.</p>
+      </div>
+      <div class="stem-card stem-card-wide">
+        <h3>Other</h3>
+        <p>All remaining instruments — synths, guitars, keys, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demos -->
+  <section class="section">
+    <div class="section-label">// LISTEN: BEFORE & AFTER</div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">ORIGINAL</span>
+        <span class="demo-title">Original Mix</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomnaNoCopyrightOriginal.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 01</span>
+        <span class="demo-title">Vocals</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_vocals_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 02</span>
+        <span class="demo-title">Instrumental</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_vocals_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 03</span>
+        <span class="demo-title">Drums</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_drum_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 04</span>
+        <span class="demo-title">Without Drums</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_drum_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 05</span>
+        <span class="demo-title">Bass</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_bass_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <div class="demo-header">
+        <span class="demo-label">STEM 06</span>
+        <span class="demo-title">Without Bass</span>
+      </div>
+      <div class="demo-player">
+        <audio controls>
+          <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_bass_split_by_lalalai_preview.mp3" type="audio/mp3">
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stem Pricing -->
+  <section class="section">
+    <div class="section-label">// PRICING</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">SHORT</div>
+        <div class="price-main">€12 <span>/ track</span></div>
+        <div class="price-desc">Up to 5 min · 4 stems · Human reviewed</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">MEDIUM</div>
+        <div class="price-main">€16 <span>/ track</span></div>
+        <div class="price-desc">5–10 min · 4 stems · Human reviewed</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">LONG</div>
+        <div class="price-main">€25 <span>/ track</span></div>
+        <div class="price-desc">10+ min · Full human review</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">PACK 5</div>
+        <div class="price-main">€40 <span>/ 5 tracks</span></div>
+        <div class="price-desc">€8 per track · Priority delivery</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">PACK 10</div>
+        <div class="price-main">€80 <span>/ 10 tracks</span></div>
+        <div class="price-desc">€8 per track · Priority delivery</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">MONTHLY</div>
+        <div class="price-main">€150 <span>/ mo</span></div>
+        <div class="price-desc">25 tracks · 2 revisions · Support</div>
+        <button class="order-btn" onclick="showPage('form')">Order Now →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to split your track?</h2>
+    <p>Submit your file and get clean stems fast.</p>
+    <button class="btn-primary" onclick="showPage('form')">REQUEST NOW</button>
+  </section>
+
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FORM PAGE
+════════════════════════════════════════════ -->
+<div id="form" class="page">
+  <div class="form-container">
+    <div class="form-box">
+      <button class="back-btn" onclick="showPage('home')" style="margin-bottom:1.5rem;">← Back to Home</button>
+      <h2>Request a Service</h2>
+      <p class="form-subtitle">Fill in the details below and we'll get back to you within 24 hours.</p>
+
+      <form id="serviceForm" onsubmit="handleSubmit(event)">
+
+        <!-- SERVICE SELECT -->
+        <div style="margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border);">
+          <p style="font-weight:600; font-size:0.9rem; margin-bottom:1rem;">What service do you need? *</p>
+          <div class="service-select-row">
+            <div class="radio-option">
+              <input type="radio" id="r-transcription" name="service" value="transcription" required onchange="toggleServiceFields('transcription')">
+              <label for="r-transcription">Transcription</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="r-stems" name="service" value="stems" onchange="toggleServiceFields('stems')">
+              <label for="r-stems">Stem Separation</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMMON FIELDS -->
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" required placeholder="you@example.com">
+        </div>
+
+        <!-- TRANSCRIPTION FIELDS -->
+        <div id="fields-transcription" class="conditional-section">
+          <div class="form-group">
+            <label>Audio Duration *</label>
+            <select id="sel-duration" required>
+              <option value="">Select duration...</option>
+              <option>Up to 10 minutes (€12)</option>
+              <option>10–30 minutes (€18)</option>
+              <option>30+ minutes (€0.50/min)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Language *</label>
+            <select id="sel-language" required>
+              <option value="">Select language...</option>
+              <option>English</option>
+              <option>Greek</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- STEMS FIELDS -->
+        <div id="fields-stems" class="conditional-section">
+          <div class="form-group">
+            <label>Track Duration *</label>
+            <select id="sel-track-dur">
+              <option value="">Select duration...</option>
+              <option>Up to 5 minutes (€12)</option>
+              <option>5–10 minutes (€16)</option>
+              <option>10+ minutes (€25)</option>
+              <option>Pack of 5 tracks (€40)</option>
+              <option>Pack of 10 tracks (€80)</option>
+              <option>Monthly plan (€150/mo)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea placeholder="Any special requests or details..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">SUBMIT REQUEST</button>
+
+      </form>
+    </div>
   </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="section">
-  <div class="section-label">// HOW IT WORKS</div>
-  <div class="steps">
-    <div class="step">
-      <h3>Send Your Track</h3>
-      <p>Submit via WeTransfer or Google Drive through our request form.</p>
-    </div>
-    <div class="step">
-      <h3>AI Processing</h3>
-      <p>Our AI pipeline separates your track into clean stems with professional-grade algorithms.</p>
-    </div>
-    <div class="step">
-      <h3>Human Review</h3>
-      <p>A human audio engineer reviews and refines every stem before delivery.</p>
-    </div>
-    <div class="step">
-      <h3>Receive Stems</h3>
-      <p>Get your isolated stems delivered via WeTransfer. Ready to use in your project.</p>
-    </div>
-  </div>
-</section>
+  <footer>
+    <div>© 2025 AUDIOWORKS · Kostis Pavlopoulos</div>
+    <div>splitlabstems@gmail.com</div>
+  </footer>
+</div>
 
-<!-- WHAT YOU GET -->
-<section class="section">
-  <div class="section-label">// WHAT YOU GET</div>
-  <div class="stems-grid">
-    <div class="stem-card">
-      <h3>Vocals</h3>
-      <p>Clean isolated vocal track, perfect for remixes and karaoke.</p>
-    </div>
-    <div class="stem-card">
-      <h3>Instrumental</h3>
-      <p>Full instrumental version — track without vocals.</p>
-    </div>
-    <div class="stem-card">
-      <h3>Drums</h3>
-      <p>Isolated drum track for remixing and beat replacement.</p>
-    </div>
-    <div class="stem-card">
-      <h3>Without Drums</h3>
-      <p>Full mix with drums removed — everything else intact.</p>
-    </div>
-    <div class="stem-card">
-      <h3>Bass</h3>
-      <p>Isolated bass stem for mixing and production work.</p>
-    </div>
-    <div class="stem-card">
-      <h3>Without Bass</h3>
-      <p>Full mix with bass removed — ideal for re-production.</p>
-    </div>
-    <div class="stem-card stem-card-wide">
-      <h3>Other</h3>
-      <p>All remaining instruments — synths, guitars, keys, and more.</p>
-    </div>
-  </div>
-</section>
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
 
-<!-- PRICING -->
-<section class="section">
-  <div class="section-label">// PRICING</div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-name">SHORT</div>
-      <div class="price-main">€12<span>/track</span></div>
-      <div class="price-desc">Up to 5 min · 4 stems · Human reviewed</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-name">MEDIUM</div>
-      <div class="price-main">€16<span>/track</span></div>
-      <div class="price-desc">5–10 min · 4 stems · Human reviewed</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-name">LONG</div>
-      <div class="price-main">€25<span>/track</span></div>
-      <div class="price-desc">10+ min · 4 stems · Full review</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card featured">
-      <div class="featured-tag">BEST VALUE</div>
-      <div class="price-name">PACK 5</div>
-      <div class="price-main">€40<span>/5</span></div>
-      <div class="price-desc">5 tracks · €8 per track · Priority</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-name">PACK 10</div>
-      <div class="price-main">€80<span>/10</span></div>
-      <div class="price-desc">10 tracks · €8 per track · Priority</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card">
-      <div class="price-name">MONTHLY</div>
-      <div class="price-main">€150<span>/mo</span></div>
-      <div class="price-desc">25 tracks · 2 revisions · Support</div>
-      <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="order-btn">Order Now →</a>
-    </div>
-    <div class="price-card extra">
-      <div class="price-name">EXTRA STEM</div>
-      <div class="price-main">+€3<span>/stem</span></div>
-      <div class="price-desc">Guitar, piano, synth beyond standard 4 · Add to any order</div>
-    </div>
-  </div>
-</section>
+  function toggleServiceFields(service) {
+    const transcription = document.getElementById('fields-transcription');
+    const stems = document.getElementById('fields-stems');
+    if (service === 'transcription') {
+      transcription.classList.add('active');
+      stems.classList.remove('active');
+      document.getElementById('sel-duration').required = true;
+      document.getElementById('sel-language').required = true;
+      document.getElementById('sel-track-dur').required = false;
+    } else {
+      stems.classList.add('active');
+      transcription.classList.remove('active');
+      document.getElementById('sel-track-dur').required = true;
+      document.getElementById('sel-duration').required = false;
+      document.getElementById('sel-language').required = false;
+    }
+  }
 
-<!-- DEMOS -->
-<section class="section">
-  <div class="section-label">// BEFORE & AFTER</div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">ORIGINAL</span>
-      <span class="demo-header-title">Original Mix</span>
-    </div>
-    <div class="demo-player">
-      <div class="demo-player-label">ORIGINAL MIX</div>
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomnaNoCopyrightOriginal.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 01</span>
-      <span class="demo-header-title">Vocals</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_vocals_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 02</span>
-      <span class="demo-header-title">Instrumental</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_vocals_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 03</span>
-      <span class="demo-header-title">Drums</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_drum_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 04</span>
-      <span class="demo-header-title">Without Drums</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_drum_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 05</span>
-      <span class="demo-header-title">Bass</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_bass_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-
-  <div class="demo-block">
-    <div class="demo-header">
-      <span class="demo-header-label">STEM 06</span>
-      <span class="demo-header-title">Without Bass</span>
-    </div>
-    <div class="demo-player">
-      <audio controls>
-        <source src="https://raw.githubusercontent.com/SplitLabStems/SLS/main/StudioKolomna-no%20Copyright%20music%20Edited_no_bass_split_by_lalalai_preview.mp3" type="audio/mp3">
-      </audio>
-    </div>
-  </div>
-</section>
-
-<!-- WHY SPLITLAB -->
-<section class="section">
-  <div class="section-label">// WHY SPLITLAB</div>
-  <div class="why-grid">
-    <div class="why-item">
-      <h3>AI + Human Ears</h3>
-      <p>Every stem is reviewed and refined by a professional audio engineer. Not just automation.</p>
-    </div>
-    <div class="why-item">
-      <h3>Any Genre</h3>
-      <p>Pop, hip-hop, electronic, rock, jazz — our pipeline handles any style with precision.</p>
-    </div>
-    <div class="why-item">
-      <h3>Fast Turnaround</h3>
-      <p>Available 9:00 AM – 9:00 PM Athens Time (GMT+3). Most orders processed same day.</p>
-    </div>
-    <div class="why-item">
-      <h3>Professional Quality</h3>
-      <p>Trusted by DJs, remixers, producers, and sync licensing professionals worldwide.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Ready to split your next track?</h2>
-  <p>Submit your request and get your stems back fast.</p>
-  <a href="https://forms.gle/S5LYQZVd3pWVhKTD7" target="_blank" class="btn-primary">REQUEST STEMS NOW</a>
-</section>
-
-<footer>
-  <div>© 2025 SPLITLAB · Kostis Pavlopoulos</div>
-  <div>splitlabstems@gmail.com</div>
-</footer>
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thank you! Your request has been submitted. We\'ll contact you within 24 hours.');
+    e.target.reset();
+    document.getElementById('fields-transcription').classList.remove('active');
+    document.getElementById('fields-stems').classList.remove('active');
+  }
+</script>
 
 </body>
 </html>
